@@ -1,0 +1,36 @@
+### Gradle ###
+.gradle/
+build/
+
+# Gradle Wrapper (gradlew, gradlew.bat, gradle/wrapper/) is intentionally NOT ignored
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Kotlin ###
+.kotlin/
+
+
+### Environment / local secrets ###
+.env
+.env.*
+!.env.example
+
+### VS Code ###
+.vscode/
+
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
+### Temporary files ###
+*.tmp
+*.swp
+*.swo
+*~
