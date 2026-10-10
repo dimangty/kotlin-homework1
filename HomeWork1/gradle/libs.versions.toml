@@ -1,0 +1,7 @@
+[versions]
+kotlin = "2.4.21"
+jvm = "17"
+
+[libraries.kotlin-gradle-plugin]
+module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
+version.ref = "kotlin"
