@@ -1,22 +1,19 @@
 plugins {
-    kotlin("jvm") version "2.4.10"
+    base
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+val homeworkBuilds = listOf("plagin", "uchebnye-moduli", "proektnye-moduli")
 
-repositories {
-    mavenCentral()
+tasks.named("assemble") {
+    dependsOn(homeworkBuilds.map { gradle.includedBuild(it).task(":assemble") })
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
+tasks.named("check") {
+    dependsOn(homeworkBuilds.map { gradle.includedBuild(it).task(":check") })
 }
 
-kotlin {
-    jvmToolchain(17)
-}
-
-tasks.test {
-    useJUnitPlatform()
+tasks.register("verifyHomework") {
+    group = "verification"
+    description = "Assembles and checks all homework builds"
+    dependsOn(tasks.named("build"))
 }
