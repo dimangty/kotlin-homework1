@@ -7,8 +7,13 @@ plugins {
 tasks.named("assemble") {
     dependsOn(
         ":HomeWork1:assemble",
-        ":lesson-mpp:assemble",
-        ":lesson-mpp:compileKotlinJvm",
-        ":lesson-mpp:compileKotlinJs"
+        ":lesson-mpp:assemble"
+    )
+}
+
+tasks.named("check") {
+    dependsOn(
+        ":HomeWork1:check",
+        ":lesson-mpp:check"
     )
 }

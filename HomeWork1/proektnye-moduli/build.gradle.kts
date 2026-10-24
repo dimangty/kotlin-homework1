@@ -7,8 +7,13 @@ plugins {
 tasks.named("assemble") {
     dependsOn(
         ":domain-jvm:assemble",
-        ":shared-kmp:assemble",
-        ":shared-kmp:compileKotlinJvm",
-        ":shared-kmp:compileKotlinJs"
+        ":shared-kmp:assemble"
+    )
+}
+
+tasks.named("check") {
+    dependsOn(
+        ":domain-jvm:check",
+        ":shared-kmp:check"
     )
 }

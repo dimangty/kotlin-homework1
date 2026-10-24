@@ -2,17 +2,18 @@ plugins {
     base
 }
 
-val verifyHomework by tasks.registering {
-    group = "verification"
-    description = "Assembles plugins and compiles homework modules"
-
-    dependsOn(
-        gradle.includedBuild("plagin").task(":assemble"),
-        gradle.includedBuild("uchebnye-moduli").task(":assemble"),
-        gradle.includedBuild("proektnye-moduli").task(":assemble")
-    )
-}
+val homeworkBuilds = listOf("plagin", "uchebnye-moduli", "proektnye-moduli")
 
 tasks.named("assemble") {
-    dependsOn(verifyHomework)
+    dependsOn(homeworkBuilds.map { gradle.includedBuild(it).task(":assemble") })
+}
+
+tasks.named("check") {
+    dependsOn(homeworkBuilds.map { gradle.includedBuild(it).task(":check") })
+}
+
+tasks.register("verifyHomework") {
+    group = "verification"
+    description = "Assembles and checks all homework builds"
+    dependsOn(tasks.named("build"))
 }

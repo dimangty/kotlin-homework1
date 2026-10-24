@@ -5,3 +5,7 @@ jvm = "17"
 [libraries.kotlin-gradle-plugin]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
+
+[libraries.kotlin-test]
+module = "org.jetbrains.kotlin:kotlin-test"
+version.ref = "kotlin"

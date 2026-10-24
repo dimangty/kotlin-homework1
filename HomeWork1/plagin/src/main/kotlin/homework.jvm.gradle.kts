@@ -13,4 +13,17 @@ kotlin {
     jvmToolchain(
         catalog.findVersion("jvm").get().requiredVersion.toInt()
     )
+
+    sourceSets {
+        named("main") {
+            kotlin.srcDir("src/jvmMain/kotlin")
+        }
+        named("test") {
+            kotlin.srcDir("src/jvmTest/kotlin")
+        }
+    }
+}
+
+dependencies {
+    testImplementation(catalog.findLibrary("kotlin-test").get())
 }
